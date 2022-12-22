@@ -20,9 +20,12 @@ contract Bataille_navale {
         uint level;
         uint prix;
         bool disponible;
+        uint kill;
+        uint last_fight;
 
         
     }
+    
     uint count;
     mapping(address =>  uint[]) Bateaux_utilisateur;
     mapping(address =>  uint) solde_utilisateur;
@@ -45,6 +48,7 @@ contract Bataille_navale {
     
 
     function acheter_bateau(uint id_bateau) public {
+        
         require(All_bateau[id_bateau].disponible ==true, "Bateau deja vendu");
         require(solde_utilisateur[msg.sender]>=All_bateau[id_bateau].prix, "Solde insuffisant");
         if (All_bateau[id_bateau].equipe != 0x0000000000000000000000000000000000000000) 
@@ -98,9 +102,12 @@ function retourner_nbr_bateau() public view isOwner returns (uint)
         return count;
 
     }
-    function attaquer(uint bateau_utilisateur, uint bateau_cible) public view  returns (string memory) {
+  
+
+    function attaquer(uint bateau_utilisateur, uint bateau_cible) public   returns (string memory) {
         require(All_bateau[bateau_utilisateur].equipe == msg.sender,"ce n'est pas votre bateau");
         require(All_bateau[bateau_utilisateur].equipe != All_bateau[bateau_cible].equipe, "Vous attaquez un de vos bateaux");
+        require(All_bateau[bateau_utilisateur].last_fight==0||(block.timestamp-All_bateau[bateau_utilisateur].last_fight)/ 60 / 60 / 24 >=1 days, "Vous avez deja combattu votre bateau est en reparation");
         uint sante1 = All_bateau[bateau_utilisateur].sante;
         uint sante2 = All_bateau[bateau_cible].sante;
         while (sante1 !=0 && sante2 !=0)
@@ -122,13 +129,24 @@ function retourner_nbr_bateau() public view isOwner returns (uint)
         }
         if (sante1 ==0) 
         {
+            All_bateau[bateau_utilisateur].last_fight = block.timestamp;
+
             return "Vous avez perdu";
+            
         }
         else {
+            All_bateau[bateau_utilisateur].last_fight = block.timestamp;
+            All_bateau[bateau_utilisateur].kill +=1;
+                        All_bateau[bateau_utilisateur].level = uint(All_bateau[bateau_utilisateur].kill)/uint(3);
                         return "Vous avez gagne";
+                        
 
         }
 
 
+    }
+    function retourner_dernier_fight(uint id_bateau) public view  returns (uint) 
+    {
+            return All_bateau[id_bateau].last_fight;
     }
 }

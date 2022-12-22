@@ -2,10 +2,27 @@ Bataille de bateau créer en solidity.
 
 Fonctionnalité : 
 
- - Créer un bateau en tant qu'administrator afin de créer sa collection nft.
- - Les bateaux peuvent etre acheté par les clients en déposant des ethereums sur la blockchain.
-  - Une fois acheté par un client celui la peut soit faire progresser son bateau afin que celui ci gagne des niveaux. Implémentation possible avec de la probabilité de toucher ou non un bateau ennemi. (ajout peut etre qui sera fait).
- - Le client à le droit à une attaque par jour par bateau, on pourra imaginer que le client aura plusieurs bateaux et qu'il farmera pour qu'il puisse gagner des récompense grâce à son niveau et ses bateaux.
+ - Créer des bateaux en tant qu'administrateur afin de créer sa collection nft.
+ 
+ - Les bateaux peuvent etre acheté par les clients en déposant des ethereums sur le contrat.
+ 
+ - Une fois acheté par un client celui la peut soit faire progresser son bateau afin que celui ci gagne des niveaux. 
+ Implémentation possible avec de la probabilité de toucher ou non un bateau ennemi. (ajout peut etre qui sera fait).
+ 
+ - Le client à le droit à une attaque par jour par bateau, on pourra imaginer que le client aura plusieurs bateaux 
+ et qu'il farmera pour qu'il puisse gagner des récompense grâce à son niveau et ses bateaux.
+ 
+
  - Le client pourra par la suite vendre son bateau si il souhaite et récupérer son dû.
- - Des règles de sécurités ont été ajoutés notamment le fait d'attaquer un bateau qui appartient au meme propriétaire, ou d'attaquer un bateau qui n'a pas été vendu.
- - On pourra par la suite imaginer que selon le grade du client, son bateau pourra lui donner accès a des evenements spéciaux, ou des calls qui lui permettront de gagner des revenus par la suite.
+ 
+ - Des règles de sécurités ont été ajoutés notamment le fait d'attaquer un bateau qui appartient au meme propriétaire, 
+ ou d'attaquer un bateau qui n'a pas été vendu.
+ 
+ - On pourra par la suite imaginer que selon le grade du client, 
+ son bateau pourra lui donner accès a des evenements spéciaux, ou des calls qui lui permettront de gagner des revenus par la suite.
+
+
+- Ajout d'observateur permettant de tracker par exemple le nombre de bateau qu'une adresse possèdent, les statistiques d'un bateaux 
+(son niveau, son propriétaire, ses dégats, sa santé)
+
+N'hésitez pas à me demander si vous souhaitez que j'ajoute de nouvelles fonctionnalités.
